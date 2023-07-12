@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta name="description" content="A static webpage for a leaderboard in Dustland Monopoly community event">
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <title>Dustnopoly</title>
+        <link rel="icon" type="image/x-icon" href="">
+        <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    </head>
+    <body>
+        <video id="background-video" autoplay loop muted>
+            <source src="Kettlemine background.mp4" type="video/mp4">
+        </video>
+        <section id="header">
+            <img src="DUSTLAND_LOGO-ORG.png" alt="Dustland Logo" id="logo-header">
+            <p id="monopoly">Dustnopoly</p>
+        </section>
+        <section id="main">
+            <img src="Dustnopoly Base.png" alt="Dustland Monopoly Board" id="board">
+            <div id="leaderboard">
+
+            </div>
+            <section id="board-content">
+                <div class="dice">
+                    <ol class="die-list even-roll" data-roll="1" id="die-1">
+                        <li class="die-item" data-side="1">
+                            <span class="dot"></span>
+                        </li>
+                        <li class="die-item" data-side="2">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </li>
+                        <li class="die-item" data-side="3">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </li>
+                        <li class="die-item" data-side="4">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </li>
+                        <li class="die-item" data-side="5">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </li>
+                        <li class="die-item" data-side="6">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </li>
+                    </ol>
+                    <ol class="die-list odd-roll" data-roll="1" id="die-2">
+                        <li class="die-item" data-side="1">
+                            <span class="dot"></span>
+                        </li>
+                        <li class="die-item" data-side="2">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </li>
+                        <li class="die-item" data-side="3">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </li>
+                        <li class="die-item" data-side="4">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </li>
+                        <li class="die-item" data-side="5">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </li>
+                        <li class="die-item" data-side="6">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </li>
+                    </ol>
+                </div>
+                <button type="button" id="roll-button">Roll Dice</button>
+                <script src="index.js"></script>
+            </section>
+            <div class="placeholders">
+                <div id="bg-blur-ket" onclick="popdownKet()">
+                    <p>b</p>
+                </div>
+                <div id="kettlemine" onclick="popupKet()">
+                    <p>s</p>
+                </div>
+                <img class="pop" id="ket-pop" src="Dustland_Settlement_Kettlemine.jpg" alt="A popup image of Kettlemine"
+                onclick="popdownKet()">
+
+                <div id="exc1">
+                    <p>!</p>
+                </div>  
+
+                <div id="bg-blur-tunexit" onclick="popdownTunExit()">
+                    <p>b</p>
+                </div>
+                <div id="tunnel-exit" onclick="popupTunExit()">
+                    <p>c</p>
+                </div>
+                <img class="pop" id="tunexit-pop" src="Tunnel Exit.jpeg" alt="A popup image of the Tunnel Exit"
+                onclick="popdownTunExit()">
+
+                <div id="bg-blur-coy" onclick="popdownCoy()">
+                    <p>b</p>
+                </div>
+                <div id="coyote-skull" onclick="popupCoy()">
+                    <p>c</p>
+                </div>
+                <img class="pop" id="coy-pop" src="Dustland_Settlement_CoyoteSkull.jpg" alt="A popup image of Coyote Skull"
+                onclick="popdownCoy()">
+
+                <div id="quest1">
+                    <p>?</p>
+                </div>
+
+                <div id="bg-blur-nas" onclick="popdownNas()">
+                    <p>b</p>
+                </div>
+                <div id="nas" onclick="popupNas()">
+                    <p>n</p>
+                </div>
+                <img class="pop" id="nas-pop" src="Dustland_Settlement_NewAliceSprings.jpg" alt="A popup image of New Alice Springs"
+                onclick="popupNas()">
+
+                <div id="exc2">
+                    <p>!</p>
+                </div>
+
+                <div id="bg-blur-ksent" onclick="popdownKSEnt()">
+                    <p>b</p>
+                </div>
+                <div id="shaft-ent" onclick="popupKSEnt()">
+                    <p>s</p>
+                </div>
+                <img class="pop" id="ksent-pop" src="KS Entrance.jpeg" alt="A popup image of the Kettlemine Shafts Entrance"
+                onclick="popupKSEnt()">
+
+                <div id="bg-blur-shim" onclick="popdownShim()">
+                    <p>b</p>
+                </div>
+                <div id="shimmering" onclick="popupShim()">
+                    <p>s</p>
+                </div>
+                <img class="pop" id="shim-pop" src="24_The Shimmering Lake.jpeg" alt="A popup image of Shimmering Lake"
+                onclick="popupShim()">
+
+                <div id="quest2">
+                    <p>?</p>
+                </div>
+
+                <div id="exc3">
+                    <p>!</p>
+                </div>
+
+                <div id="bg-blur-ksexit" onclick="popdownKSExit()">
+                    <p>b</p>
+                </div>
+                <div id="shaft-ex" onclick="popupKSExit()">
+                    <p>s</p>
+                </div>
+                <img class="pop" id="ksexit-pop" src="KS Exit.jpeg" alt="A popup image of the Kettlemine Shafts Exit"
+                onclick="popupKSExit()">
+
+                <div id="quest3">
+                    <p>?</p>
+                </div>
+
+                <div id="bg-blur-glass" onclick="popdownGlass()">
+                    <p>b</p>
+                </div>
+                <div id="glass" onclick="popupGlass()">
+                    <p>g</p>
+                </div>
+                <img class="pop" id="glass-pop" src="25_The Glass Hills.jpeg" alt="A popup image of the Glass Hills"
+                onclick="popdownGlass()">
+
+                <div id="exc4">
+                    <p>!</p>
+                </div>
+
+                <div id="bg-blur-cac" onclick="popdownCac()">
+                    <p>b</p>
+                </div>
+                <div id="cactus" onclick="popupCac()">
+                    <p>c</p>
+                </div>
+                <img class="pop" id="cac-pop" src="27_Cactus Coil.jpg" alt="A popup image of Cactus Coil"
+                onclick="popdownCac()">
+
+                <div id="bg-blur-tunent" onclick="popdowntunEnt()">
+                    <p>b</p>
+                </div>
+                <div id="tunnel" onclick="popuptunEnt()">
+                    <p>t</p>
+                </div>
+                <img class="pop" id="tunent-pop" src="Tunnel Entrance.jpeg" alt="A popup image of the Tunnel Entrance"
+                onclick="popdowntunEnt()">
+                
+                <div id="quest4">
+                    <p>q</p>
+                </div>
+            </div>
+        </section>
+        <section id="footer">
+
+        </section>
+    </body>
+</html>

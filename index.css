@@ -1,0 +1,624 @@
+:root {
+    --background-color: rgb(13, 21, 32);
+    --background-color-fade: rgba(13, 21, 32, 0.8);
+    --text-color: #dce1e3;
+    --misc-color: rgb(255, 92, 1);
+    --misc-color-fade: rgba(255, 92, 1, 0.8);
+    --transparent-color: rgba(255, 92, 1, 0);
+    --faded-color: rgba(13, 21, 32, 0.8);
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 1;
+}
+
+#header {
+    font-family: 'space mono', monospace;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0 auto;
+    border: 2px solid var(--text-color);
+    border-top: 0;
+    width: 9.5vw;
+    padding-bottom: 0;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+#logo-header {
+    width: 8vw;
+    margin-bottom: 0;
+}
+
+#monopoly {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+#board {
+    width: 35vw;
+    position: fixed;
+    left: 14%;
+    margin-top: 50px;
+}
+
+#leaderboard {
+    border: 2px solid var(--background-color);
+    width: 34.7vw;
+    position: fixed;
+    left: 51.5%;
+    height: 72.3vh;
+    margin-top: 50px;
+    border-radius: 10px;
+    background-color: var(--background-color-fade);
+}
+
+#board-content {
+    position: fixed;
+    top: 50%;
+    left: 15%;
+    width: 30vw;
+}
+
+.dice {
+    align-items: center;
+    z-index: 5;
+    display: grid;
+    grid-gap: 2rem; /*Sets the gap for the grid*/
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); /*Displays it in the same row*/
+    grid-template-rows: auto;
+    justify-items: center; /*Puts item in the center*/
+    padding: 2rem;
+    perspective: 600px;
+}
+
+.die-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    height: 6rem;
+    list-style-type: none;
+    transform-style: preserve-3d;
+    width: 6rem;
+}
+
+.even-roll {
+    transition: transform 1.5s ease-out;
+  }
+  .odd-roll {
+    transition: transform 1.25s ease-out;
+  }
+  .die-item {
+    background-color: #fefefe;
+    box-shadow: inset -0.35rem 0.35rem 0.75rem rgba(0, 0, 0, 0.3),
+      inset 0.5rem -0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+    display: grid;
+    grid-column: 1;
+    grid-row: 1;
+    grid-template-areas:
+      "one two three"
+      "four five six"
+      "seven eight nine";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: 100%;
+    padding: 1rem;
+    width: 100%;
+  }
+  .dot {
+    align-self: center;
+    background-color: #676767;
+    border-radius: 50%;
+    box-shadow: inset -0.15rem 0.15rem 0.25rem rgba(0, 0, 0, 0.5);
+    display: block;
+    height: 1.25rem;
+    justify-self: center;
+    width: 1.25rem;
+  }
+  .even-roll[data-roll="1"] {
+    transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
+  }
+  .even-roll[data-roll="2"] {
+    transform: rotateX(450deg) rotateY(720deg) rotateZ(360deg);
+  }
+  .even-roll[data-roll="3"] {
+    transform: rotateX(360deg) rotateY(630deg) rotateZ(360deg);
+  }
+  .even-roll[data-roll="4"] {
+    transform: rotateX(360deg) rotateY(810deg) rotateZ(360deg);
+  }
+  .even-roll[data-roll="5"] {
+    transform: rotateX(270deg) rotateY(720deg) rotateZ(360deg);
+  }
+  .even-roll[data-roll="6"] {
+    transform: rotateX(360deg) rotateY(900deg) rotateZ(360deg);
+  }
+  .odd-roll[data-roll="1"] {
+    transform: rotateX(-360deg) rotateY(-720deg) rotateZ(-360deg);
+  }
+  .odd-roll[data-roll="2"] {
+    transform: rotateX(-270deg) rotateY(-720deg) rotateZ(-360deg);
+  }
+  .odd-roll[data-roll="3"] {
+    transform: rotateX(-360deg) rotateY(-810deg) rotateZ(-360deg);
+  }
+  .odd-roll[data-roll="4"] {
+    transform: rotateX(-360deg) rotateY(-630deg) rotateZ(-360deg);
+  }
+  .odd-roll[data-roll="5"] {
+    transform: rotateX(-450deg) rotateY(-720deg) rotateZ(-360deg);
+  }
+  .odd-roll[data-roll="6"] {
+    transform: rotateX(-360deg) rotateY(-900deg) rotateZ(-360deg);
+  }
+  [data-side="1"] {
+    transform: rotate3d(0, 0, 0, 90deg) translateZ(4rem);
+  }
+  [data-side="2"] {
+    transform: rotate3d(-1, 0, 0, 90deg) translateZ(4rem);
+  }
+  [data-side="3"] {
+    transform: rotate3d(0, 1, 0, 90deg) translateZ(4rem);
+  }
+  [data-side="4"] {
+    transform: rotate3d(0, -1, 0, 90deg) translateZ(4rem);
+  }
+  [data-side="5"] {
+    transform: rotate3d(1, 0, 0, 90deg) translateZ(4rem);
+  }
+  [data-side="6"] {
+    transform: rotate3d(1, 0, 0, 180deg) translateZ(4rem);
+  }
+  [data-side="1"] .dot:nth-of-type(1) {
+    grid-area: five;
+  }
+  [data-side="2"] .dot:nth-of-type(1) {
+    grid-area: one;
+  }
+  [data-side="2"] .dot:nth-of-type(2) {
+    grid-area: nine;
+  }
+  [data-side="3"] .dot:nth-of-type(1) {
+    grid-area: one;
+  }
+  [data-side="3"] .dot:nth-of-type(2) {
+    grid-area: five;
+  }
+  [data-side="3"] .dot:nth-of-type(3) {
+    grid-area: nine;
+  }
+  [data-side="4"] .dot:nth-of-type(1) {
+    grid-area: one;
+  }
+  [data-side="4"] .dot:nth-of-type(2) {
+    grid-area: three;
+  }
+  [data-side="4"] .dot:nth-of-type(3) {
+    grid-area: seven;
+  }
+  [data-side="4"] .dot:nth-of-type(4) {
+    grid-area: nine;
+  }
+  [data-side="5"] .dot:nth-of-type(1) {
+    grid-area: one;
+  }
+  [data-side="5"] .dot:nth-of-type(2) {
+    grid-area: three;
+  }
+  [data-side="5"] .dot:nth-of-type(3) {
+    grid-area: five;
+  }
+  [data-side="5"] .dot:nth-of-type(4) {
+    grid-area: seven;
+  }
+  [data-side="5"] .dot:nth-of-type(5) {
+    grid-area: nine;
+  }
+  [data-side="6"] .dot:nth-of-type(1) {
+    grid-area: one;
+  }
+  [data-side="6"] .dot:nth-of-type(2) {
+    grid-area: three;
+  }
+  [data-side="6"] .dot:nth-of-type(3) {
+    grid-area: four;
+  }
+  [data-side="6"] .dot:nth-of-type(4) {
+    grid-area: six;
+  }
+  [data-side="6"] .dot:nth-of-type(5) {
+    grid-area: seven;
+  }
+  [data-side="6"] .dot:nth-of-type(6) {
+    grid-area: nine;
+  }
+  
+  #roll-button {
+    position: fixed;
+    left: 28.7%;
+    top: 73%;
+    background-color: var(--misc-color);
+    border: 1px solid var(--background-color);
+    border-radius: 20px;
+    color: var(--background-color);
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+  }
+  button:hover {
+    cursor: pointer;
+    background-color: var(--background-color);
+    color: var(--misc-color);
+  }
+  
+@media (min-width: 900px) {
+    .dice {
+      perspective: 1300px;
+    }
+}
+.placeholder {
+    position: relative;
+}
+
+#bg-blur {
+  color: var(--transparent-color);
+  background-color: var(--faded-color);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -10;
+}
+
+#ket-pop {
+  width: 60vw;
+  z-index: 5;
+  position: fixed;
+  left: 20%;
+  top: 23%;
+  border: 3px solid var(--text-color);
+  border-radius: 30px;
+  z-index: -10;
+}
+
+#kettlemine {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 44.9%;
+    top: 81.9%;
+}
+
+#kettlemine :hover {
+    width: 3.86vw;
+    height: 8vh;
+    position: fixed;
+    top: 80.3%;
+    border-bottom-right-radius: 7px;
+    box-shadow: 0 0 15px 5px var(--misc-color);
+    cursor: pointer;
+}
+
+#exc1 {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.7vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 37.3%;
+    top: 81.9%;
+}
+
+#exc1 :hover {
+    width: 3.7vw;
+    height: 8vh;
+    position: fixed;
+    top: 80.3%;
+    box-shadow: 0 0 15px 5px var(--background-color);
+    cursor: pointer;
+}
+
+#coyote-skull {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 29.5%;
+    top: 81.9%;
+}
+
+#coyote-skull :hover {
+    width: 3.86vw;
+    height: 8vh;
+    position: fixed;
+    top: 80.3%;
+    box-shadow: 0 0 15px 5px var(--misc-color);
+    cursor: pointer;
+}
+
+#quest1 {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 25.7%;
+    top: 81.9%;
+}
+
+#quest1 :hover {
+    width: 3.86vw;
+    height: 8vh;
+    position: fixed;
+    top: 80.3%;
+    box-shadow: 0 0 15px 5px var(--misc-color);
+    cursor: pointer;
+}
+
+#nas {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 18%;
+    top: 81.9%;
+}
+
+#nas :hover {
+    width: 3.86vw;
+    height: 8vh;
+    position: fixed;
+    top: 80.3%;
+    box-shadow: 0 0 15px 5px var(--misc-color);
+    cursor: pointer;
+}
+
+#exc2 {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 14.1%;
+    top: 65.9%;
+}
+
+#exc2 :hover {
+    width: 3.86vw;
+    height: 7.9vh;
+    position: fixed;
+    top: 64.5%;
+    box-shadow: 0 0 15px 5px var(--background-color);
+    cursor: pointer;
+}
+
+#shaft-ent {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 14.1%;
+    top: 50%;
+}
+
+#shaft-ent :hover {
+    width: 3.86vw;
+    height: 7.9vh;
+    position: fixed;
+    top: 48.6%;
+    box-shadow: 0 0 15px 5px var(--misc-color);
+    cursor: pointer;
+}
+
+#shimmering {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 14.1%;
+    top: 42%;
+}
+
+#shimmering :hover {
+    width: 3.86vw;
+    height: 7.9vh;
+    position: fixed;
+    top: 40.3%;
+    box-shadow: 0 0 15px 5px var(--misc-color);
+    cursor: pointer;
+}
+
+#quest2 {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 14.1%;
+    top: 33.9%;
+}
+
+#quest2 :hover {
+    width: 3.86vw;
+    height: 7.9vh;
+    position: fixed;
+    top: 32.6%;
+    box-shadow: 0 0 15px 5px var(--misc-color);
+    cursor: pointer;
+}
+
+#exc3 {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 21.8%;
+    top: 18%;
+}
+
+#exc3 :hover {
+    width: 3.86vw;
+    height: 7.9vh;
+    position: fixed;
+    top: 16.5%;
+    box-shadow: 0 0 15px 5px var(--background-color);
+    cursor: pointer;
+}
+
+#shaft-ex {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 29.5%;
+    top: 18%;
+}
+
+#shaft-ex :hover {
+    width: 3.86vw;
+    height: 7.9vh;
+    position: fixed;
+    top: 16.5%;
+    box-shadow: 0 0 15px 5px var(--misc-color);
+    cursor: pointer;
+}
+
+#quest3 {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 33.4%;
+    top: 18%;
+}
+
+#quest3 :hover {
+    width: 3.86vw;
+    height: 7.9vh;
+    position: fixed;
+    top: 16.5%;
+    box-shadow: 0 0 15px 5px var(--misc-color);
+    cursor: pointer;
+}
+
+#glass {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 41%;
+    top: 18%;
+}
+
+#glass :hover {
+    width: 3.86vw;
+    height: 7.9vh;
+    position: fixed;
+    top: 16.5%;
+    box-shadow: 0 0 15px 5px var(--misc-color);
+    cursor: pointer;
+}
+
+#exc4 {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 44.9%;
+    top: 34%;
+}
+
+#exc4 :hover {
+    width: 3.86vw;
+    height: 7.9vh;
+    position: fixed;
+    top: 32.4%;
+    box-shadow: 0 0 15px 5px var(--background-color);
+    cursor: pointer;
+}
+
+#cactus {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 44.9%;
+    top: 41.9%;
+}
+
+#cactus :hover {
+    width: 3.86vw;
+    height: 7.9vh;
+    position: fixed;
+    top: 40.4%;
+    box-shadow: 0 0 15px 5px var(--misc-color);
+    cursor: pointer;
+}
+
+#tunnel {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 44.9%;
+    top: 49.9%;
+}
+
+#tunnel :hover {
+    width: 3.86vw;
+    height: 7.9vh;
+    position: fixed;
+    top: 48.4%;
+    box-shadow: 0 0 15px 5px var(--misc-color);
+    cursor: pointer;
+}
+
+#quest4 {
+    background-color: var(--transparent-color);
+    color: var(--transparent-color);
+    width: 3.86vw;
+    height: 7.9vh;
+    position: absolute;
+    left: 44.9%;
+    top: 66%;
+}
+
+#quest4 :hover {
+    width: 3.86vw;
+    height: 7.9vh;
+    position: fixed;
+    top: 64.4%;
+    box-shadow: 0 0 15px 5px var(--misc-color);
+    cursor: pointer;
+}
